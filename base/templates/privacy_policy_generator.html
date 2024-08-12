@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static 'image/fav.jpg' %}">
+    <meta name="description" content="Generate Free Privacy Polcies with our Tool">
+    <title>Elite Drops - Free Privacy Policy Generator Tool</title>
+           
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+    
+        <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        
+        <!-- Style -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+        <!--<title>Responsive Card Slider</title>-->
+
+        <!-- Swiper CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.css">
+
+        <!-- CSS -->
+         <style>
+            /* body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+        } */
+        .containerP {
+            display: flex;
+            width: 90%;
+            max-width: 1200px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .containerP h1,h2,span,h3,h4,h5,h6{
+            color: black;
+        }
+        .containerP .form-container, .policy-container {
+            padding: 20px;
+        }
+        .containerP .form-container {
+            flex: 1;
+            background-color: #f8f9fa;
+        }
+        .containerP .policy-container {
+            flex: 2;
+            border-left: 1px solid #ccc;
+            overflow-y: auto;
+        }
+        .containerP .form-group {
+            margin-bottom: 15px;
+        }
+        .containerP label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .containerP input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .containerP button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #28a745;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .containerP button:hover {
+            background-color: #218838;
+        }
+        .containerP #copyButton {
+            background-color: #007bff;
+        }
+        .containerP #copyButton:hover {
+            background-color: #0056b3;
+        }
+        .containerP .policy-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        @media (max-width: 768px) {
+            .containerP .containerP {
+                flex-direction: column;
+            }
+            .containerP .policy-container {
+                border-left: none;
+                border-top: 1px solid #ccc;
+            }
+        }
+        .policy-container p{
+            color: black;
+        }
+         </style>
+
+</head>
+<body style="background-color: #0f3887;">
+  {% include 'web_header.html' %}
+
+
+<div style="display: flex; justify-content: center;
+            padding-top: 180px;">
+    <div class="containerP">
+        <div class="form-container">
+            <h2>Enter your company & Policy information</h2>
+            <div class="form-group">
+                <label for="storeWebsite">Store website *</label>
+                <input type="text" id="storeWebsite" placeholder="Please enter the store website">
+            </div>
+            <div class="form-group">
+                <label for="companyName">Company name *</label>
+                <input type="text" id="companyName" placeholder="Please enter the company name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email address *</label>
+                <input type="email" id="email" placeholder="Please enter the email address">
+            </div>
+            <div class="form-group">
+                <label for="country">Country/Region *</label>
+                <input type="text" id="country" placeholder="Please enter the country/region">
+            </div>
+            <div class="form-group">
+                <label for="state">State/Province *</label>
+                <input type="text" id="state" placeholder="Please enter state/province">
+            </div>
+            <div class="form-group">
+                <label for="city">City *</label>
+                <input type="text" id="city" placeholder="Please enter the city">
+            </div>
+            <div class="form-group">
+                <label for="zip">Zip/postal code *</label>
+                <input type="text" id="zip" placeholder="Please enter the zip/postal code">
+            </div>
+            <div class="form-group">
+                <label for="address">Address *</label>
+                <input type="text" id="address" placeholder="Please enter the address">
+            </div>
+            <button onclick="populatePolicy()" style="margin-top: 10px;">Generate privacy policy</button>
+            
+            <button id="copyButton" onclick="copyPolicy()" style="margin-top: 10px;">Copy to clipboard</button>
+        </div>
+        <div class="policy-container" style="max-height: 150vh; overflow-y: scroll;">
+            <h2>Generated Privacy Policy Template</h2>
+            <div id="policyContent" class="policy-content">
+                <h1 id="companyNamePlaceholder">[Company name]</h1>
+                <p>This Privacy Policy describes how your personal information is collected, used, and shared when you visit or make a purchase from <span id="storeWebsitePlaceholder">[Store website]</span> (the “Site”).</p>
+                <h2>PERSONAL INFORMATION WE COLLECT</h2>
+                <p>When you visit the Site, we automatically collect certain information about your device, including information about your web browser, IP address, time zone, and some of the cookies that are installed on your device. Additionally, as you browse the Site, we collect information about the individual web pages or products that you view, what websites or search terms referred you to the Site, and information about how you interact with the Site. We refer to this automatically-collected information as “Device Information.”</p>
+                <p>We collect Device Information using the following technologies:</p>
+                <ul>
+                    <li>“Cookies” are data files that are placed on your device or computer and often include an anonymous unique identifier. For more information about cookies, and how to disable cookies, visit http://www.allaboutcookies.org.</li>
+                    <li>“Log files” track actions occurring on the Site, and collect data including your IP address, browser type, Internet service provider, referring/exit pages, and date/time stamps.</li>
+                    <li>“Web beacons,” “tags,” and “pixels” are electronic files used to record information about how you browse the Site.</li>
+                </ul>
+                <p>Additionally when you make a purchase or attempt to make a purchase through the Site, we collect certain information from you, including your name, billing address, shipping address, payment information (including credit card numbers, [Other payment information]), email address, and phone number. We refer to this information as “Order Information.”</p>
+                <p>When we talk about “Personal Information” in this Privacy Policy, we are talking both about Device Information and Order Information.</p>
+                <h2>HOW DO WE USE YOUR PERSONAL INFORMATION?</h2>
+                <p>We use the Order Information that we collect generally to fulfill any orders placed through the Site (including processing your payment information, arranging for shipping, and providing you with invoices and/or order confirmations). Additionally, we use this Order Information to:</p>
+                <ul>
+                    <li>Communicate with you;</li>
+                    <li>Screen our orders for potential risk or fraud; and</li>
+                    <li>When in line with the preferences you have shared with us, provide you with information or advertising relating to our products or services.</li>
+                </ul>
+                <p>We use the Device Information that we collect to help us screen for potential risk and fraud (in particular, your IP address), and more generally to improve and optimize our Site (for example, by generating analytics about how our customers browse and interact with the Site, and to assess the success of our marketing and advertising campaigns).</p>
+                <h2>SHARING YOUR PERSONAL INFORMATION</h2>
+                <p>We share your Personal Information with third parties to help us use your Personal Information, as described above. For example, we use Shopify to power our online store--you can read more about how Shopify uses your Personal Information here: https://www.shopify.com/legal/privacy. We also use Google Analytics to help us understand how our customers use the Site--you can read more about how Google uses your Personal Information here: https://www.google.com/intl/en/policies/privacy/. You can also opt-out of Google Analytics here: https://tools.google.com/dlpage/gaoptout.</p>
+                <p>Finally, we may also share your Personal Information to comply with applicable laws and regulations, to respond to a subpoena, search warrant or other lawful request for information we receive, or to otherwise protect our rights.</p>
+                <h2>BEHAVIOURAL ADVERTISING</h2>
+                <p>As described above, we use your Personal Information to provide you with targeted advertisements or marketing communications we believe may be of interest to you. For more information about how targeted advertising works, you can visit the Network Advertising Initiative’s (“NAI”) educational page at http://www.networkadvertising.org/understanding-online-advertising/how-does-it-work.</p>
+                <p>You can opt out of targeted advertising by:</p>
+                <ul>
+                    <li>FACEBOOK - https://www.facebook.com/settings/?tab=ads</li>
+                    <li>GOOGLE - https://www.google.com/settings/ads/anonymous</li>
+                    <li>BING - https://advertise.bingads.microsoft.com/en-us/resources/policies/personalized-ads</li>
+                </ul>
+                <p>Additionally, you can opt out of some of these services by visiting the Digital Advertising Alliance’s opt-out portal at: http://optout.aboutads.info/.</p>
+                <h2>DO NOT TRACK</h2>
+                <p>Please note that we do not alter our Site’s data collection and use practices when we see a Do Not Track signal from your browser.</p>
+                <h2>YOUR RIGHTS</h2>
+                <p>If you are a European resident, you have the right to access personal information we hold about you and to ask that your personal information be corrected, updated, or deleted. If you would like to exercise this right, please contact us through the contact information below.</p>
+                <p>Additionally, if you are a European resident we note that we are processing your information in order to fulfill contracts we might have with you (for example if you make an order through the Site), or otherwise to pursue our legitimate business interests listed above. Additionally, please note that your information will be transferred outside of Europe, including to Canada and the United States.</p>
+                <h2>DATA RETENTION</h2>
+                <p>When you place an order through the Site, we will maintain your Order Information for our records unless and until you ask us to delete this information.</p>
+                <h2>CHANGES</h2>
+                <p>We may update this privacy policy from time to time in order to reflect, for example, changes to our practices or for other operational, legal or regulatory reasons.</p>
+                <h2>CONTACT US</h2>
+                <p>For more information about our privacy practices, if you have questions, or if you would like to make a complaint, please contact us by e-mail at <span id="emailPlaceholder">[Email address]</span> or by mail using the details provided below:</p>
+                <p>
+                    <span id="addressPlaceholder">[Address]</span>, <span id="cityPlaceholder">[City]</span>, <span id="statePlaceholder">[State/Province]</span>, <span id="zipPlaceholder">[Zip/postal code]</span>, <span id="countryPlaceholder">[Country/Region]</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function populatePolicy() {
+        document.getElementById('storeWebsitePlaceholder').textContent = document.getElementById('storeWebsite').value;
+        document.getElementById('companyNamePlaceholder').textContent = document.getElementById('companyName').value;
+        document.getElementById('emailPlaceholder').textContent = document.getElementById('email').value;
+        document.getElementById('countryPlaceholder').textContent = document.getElementById('country').value;
+        document.getElementById('statePlaceholder').textContent = document.getElementById('state').value;
+        document.getElementById('cityPlaceholder').textContent = document.getElementById('city').value;
+        document.getElementById('zipPlaceholder').textContent = document.getElementById('zip').value;
+        document.getElementById('addressPlaceholder').textContent = document.getElementById('address').value;
+    }
+
+    function copyPolicy() {
+        const policyContent = document.getElementById('policyContent').innerText;
+        const textarea = document.createElement('textarea');
+        textarea.value = policyContent;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        alert('Privacy Policy copied to clipboard');
+    }
+</script>
+
+    <!-- FOOTER -->
+    {% include 'footer_main.html' %}
+
+    
+
+<!-- Swiper JS -->
+<script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.js"></script>
+
+<!-- JavaScript -->
+  <!--Uncomment this line-->
+<script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/script.js"></script>
+<script>
+     
+var swiper = new Swiper(".anwarslide-content", {
+slidesPerView: 3,
+spaceBetween: 25,
+loop: true,
+centerSlide: 'true',
+fade: 'true',
+grabCursor: 'true',
+autoplay: {
+    delay: 5000, // 5000 milliseconds = 5 seconds
+    disableOnInteraction: false,
+},
+pagination: {
+  el: ".anwarswiper-pagination",
+  clickable: true,
+  dynamicBullets: true,
+},
+navigation: {
+  nextEl: ".anwarswiper-button-next",
+  prevEl: ".anwarswiper-button-prev",
+},
+
+breakpoints:{
+    0: {
+        slidesPerView: 1,
+    },
+    520: {
+        slidesPerView: 2,
+    },
+    950: {
+        slidesPerView: 3,
+    },
+},
+});
+
+</script>
+
+    <!-- FOOTER SECTION -->
+
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.sticky.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+ 
+</body>
+</html>

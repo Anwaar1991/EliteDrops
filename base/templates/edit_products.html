@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static 'image/fav.jpg' %}">
+
+    <title>Edit Product</title>
+           
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+    
+        <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        
+        <!-- Style -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+        <!--<title>Responsive Card Slider</title>-->
+
+        <!-- Swiper CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.css">
+
+        <!-- CSS -->
+         <style>
+.container1 {
+    display: flex;
+    height: 100vh;
+}
+
+.hamburger {
+    position: absolute;
+    top: 25px;
+    left: 20px;
+    font-size: 34px;
+    cursor: pointer;
+    z-index: 1000;
+    color: white;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0px;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    padding-top: 130px;
+    transition: left 0.3s;
+    z-index: 999;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 15px 20px;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar ul li:hover {
+    background-color: #575757;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+}
+         </style>
+</head>
+<body style="background-color: #0f3887;">
+    {% include 'header.html' %}
+    {% if user.is_authenticated and user.is_staff %}
+        <div class="container1">
+            <div class="hamburger" id="hamburger">
+                ☰
+            </div>
+            {% include 'sidebar.html' %}
+            <div class="content" style="padding-top: 180px;">
+
+                <div class="container ">
+                    <h3 style="text-align: center; color: white;">EDIT PRODUCT DETAILS</h3>
+                        <div class="row reg_form mb-4 product_card" style="display: flex; justify-content: center;">
+                            <div class="col-sm-8 form-col form_inputs">
+                                <form action="" method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <label for="name">Enter Product Title:<span style="color: red;">*</span> </label>
+                                    <input class="form-control" type="text" required name="title" id="name" value="{{product.title}}">
+                                    <br>
+                                    <label for="product_image">Product Image <span style="font-size: 12px;">(Attach one Picture only)</span>: <span style="color: red;">*</span></label>
+                                    {% if product.product_image %}
+                                        <img src="{{ product.product_image.url }}" alt="Product Image" style="max-width: 200px; display: block; margin-bottom: 10px;">
+                                    {% endif %}
+                                    <input style="width: fit-content;" class="form-control"  type="file" name="product_image" id="product_image">
+                                    <br>
+                                    <label for="description">Description:<span style="color: red;">*</span> </label>
+                                    <textarea name="description" id="description" class="form-control">{{product.description}}</textarea>
+                                    <br>
+                                    <label for="niche">Choose a niche <span style="color: red;">*</span>:</label>
+                                    <select id="niche" class="form-control" name="niche">
+                                        <option value="{{product.niche.niche_name}}">{{product.niche.niche_name}}</option>
+                                        {% for n in niche %}
+                                            <option value="{{n.niche_name}}" required name="niche">{{n.niche_name}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <br>
+                                    <label for="username">Purchase Cost:<span style="color: red;">*</span></label>
+                                    <input class="form-control" type="number" required name="purchase_cost" id="purchase_cost" value="{{product.purchase_cost}}">
+                                    <br>
+                                    <label for="username">Selling Cost:<span style="color: red;">*</span></label>
+                                    <input class="form-control" type="number" required name="selling_cost" id="selling_cost" value="{{product.selling_cost}}">
+                                    <br>
+                                    <label for="username">Profit:<span style="color: red;">*</span></label>
+                                    <input class="form-control" type="number" required name="profit" id="profit" placeholder="Profit" value="{{product.profit}}">
+                                    <br>
+                                    <label for="aliexpress_link">AliExpress Link:</label>
+                                    <input class="form-control" type="url"  name="aliexpress_link" id="aliexpress_link" placeholder="AliExpress Link">
+                                    <br>
+                                    <label for="alibab_link">AliBaba Link:</label>
+                                    <input class="form-control" type="url"  name="alibab_link" id="alibab_link" placeholder="AliBaba Link">
+                                    <br>
+                                    <label for="name">Country:<span style="color: red;">*</span> </label>
+                                    <input class="form-control" type="text" required name="country" id="name" value="{{product.country}}">
+                                    <br>
+                                    <label for="name">Gender:<span style="color: red;">*</span> </label>
+                                    <input class="form-control" type="text" required name="gender" id="name" value="{{product.gender}}">
+                                    <br>
+                                    <label for="name">Age Range:<span style="color: red;">*</span> </label>
+                                    <input class="form-control" type="text" required name="age_range" id="name" value="{{product.age_range}}">
+                                    <br>
+                                    <label for="name">Audience:<span style="color: red;">*</span> </label>
+                                    <input class="form-control" type="text" required name="audience" id="name" value="{{product.audiance}}">
+                                    <br>
+                                    <label for="name">Interests:<span style="color: red;">*</span> </label>
+                                    <input class="form-control" type="text" required name="interests" id="name" value="{{product.intrests}}">
+                                    <br>
+                                    <label for="name">Approximate CPA:<span style="color: red;">*</span> </label>
+                                    <input class="form-control" type="text" required name="approximate_CPA" id="name" value="{{product.approximate_CPA}}">
+                                    <br>
+                                    <label for="name">Saturation:<span style="color: red;">*</span> </label>
+                                    <input class="form-control" type="text" required name="saturation" id="name" value="{{product.saturation}}">
+                                    <br>
+                                    <label for="email">Facebook Ads:</label>
+                                    <input class="form-control" type="url"  name="fb_ads" id="fb_ads" value="{{product.fb_ads}}">
+                                    <br>
+                                    <label for="email">Videos:</label>
+                                    <input class="form-control" type="url"  name="videos" id="videos" value="{{product.videos}}">
+                                    <br>
+                                    <label for="email">Stores Selling It:</label>
+                                    <input class="form-control" type="url"  name="stores_selling_it" id="stores_selling_it" value="{{product.stores_selling_it}}">
+                                    <br>
+                                    <div style="display: flex; justify-content: center;">
+                                        <button  type="submit" style="background-color: #0f3887; color: white; padding: 10px 20px; border-radius: 10px; border: none;">Add Product</button>
+                                    </div>
+                                </form>
+                            </div>
+                    </div>
+
+                </div>
+
+                
+            </div>
+            
+            
+            
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+        const hamburger = document.getElementById("hamburger");
+        const sidebar = document.getElementById("sidebar");
+    
+        hamburger.addEventListener("click", function() {
+            if (sidebar.style.left === "0px") {
+                sidebar.style.left = "-250px";
+            } else {
+                sidebar.style.left = "0px";
+            }
+        });
+    });
+    
+        </script>
+    {% else %}
+      <div class="container">
+        <div class="row" style="height: 400px; display: flex; align-items: center; justify-content: center;">
+            <h5 style="color: white;">You are can't access this page, because you are not Staff Member/Admin </h5>
+        </div>
+      </div>
+    {% endif %}
+</body>
+</html>

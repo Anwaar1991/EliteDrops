@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="{% static 'image/fav.jpg' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+       <!-- Required meta tags -->
+       <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+       
+       <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+   
+       <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+   
+       <!-- Bootstrap CSS -->
+       <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+       
+       <!-- Style -->
+       <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+       <!--<title>Responsive Card Slider</title>-->
+
+       <!-- Swiper CSS -->
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.css">
+
+       <!-- CSS -->
+</head>
+<body style="height: 100vh;">
+    <header role="banner" style="background-image: linear-gradient(to bottom, #255abc, #0f3887);">
+        <!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+          <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="{% static 'image/logo.webp' %}" alt="logo" style="width: 120px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarsExample05">
+              <ul class="navbar-nav ml-auto pl-lg-5 pl-0">
+                <li class="nav-item">
+                  <a class="nav-link active" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Recipes</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
+                  <div class="dropdown-menu" aria-labelledby="dropdown04">
+                    <a class="dropdown-item" href="#">Food Catering</a>
+                    <a class="dropdown-item" href="#">Drink &amp; Beverages</a>
+                    <a class="dropdown-item" href="#">Wedding &amp; Birthday</a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">News</a>
+                </li>
+              </ul>
+    
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item cta-btn" style="display: flex; justify-content: center;">
+                  <a class="nav-link" href="#" style="background-color: #0e3684;
+                  border-radius: 25px;
+                    box-shadow: -10px 10px 5px black;">Get Started</a>
+                </li>
+              </ul>
+              
+            </div>
+          </div>
+        </nav> -->
+    </header>
+
+    <div class="container" style="padding-top: 100px; height: 100vh; display: flex; align-items: center;">
+        <div class="row">
+            <div class="col-md-7" style="display: flex; justify-content: center; align-items: center;">
+                <div class="row" >
+                    <div >
+                        <img src="{% static 'image/logo.webp' %}" alt="logo" style="width: 90%;">
+                    </div>
+                    <br>
+                    <div>
+                        <p style="color: #0f3887;">Congratulations, Your payment was successful. Now Login to view your dashboard</p>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-sm-5 reg_form_div" >
+                <div class="row">
+                    <div class="col-sm-12 " style="display: flex; justify-content: center; margin-bottom: 30px ;" >
+                        <img src="{% static 'image/logo.webp' %}" alt="logo" style="width: 200px;">
+                    </div>
+                </div>
+                {% if user_exists %}
+                <div class="row" style="display: flex; justify-content:  center;">
+                    <p style="color: red; font-weight: bold;">{{ user_exists }}</p>
+                </div>
+                {% endif %}
+                {% if is_member %}
+                <div class="row" style="display: flex; justify-content:  center;">
+                    <p style="color: red; font-weight: bold;">{{ is_member }}</p>
+                </div>
+                {% endif %}
+                {% if error %}
+                <div class="row" style="display: flex; justify-content:  center;">
+                    <p style="color: red; font-weight: bold;">{{ error }}</p>
+                </div>
+                {% endif %}
+                <div class="row reg_form mb-4">
+                    <div class="col-sm-10 form-col form_inputs">
+                        <form action="" method="POST" id="registrationForm">
+                            {% csrf_token %}
+                            {% if trail_expiry %}
+                            <div class="row" style="display: flex; justify-content:  center;">
+                                <p style="color: red; font-weight: bold;">{{trail_expiry }} <a href="{% url 'buy-membership' %}">Buy membership!</a></p>
+                            </div> 
+                            {% endif %}
+                           
+                            <label for="username">Enter Username:<span style="color: red;">*</span></label>
+                            <input class="form-control" type="text" required name="username" id="username" placeholder="Username">
+                            <br>
+                            
+                            <label for="password">Enter Password:<span style="color: red;">*</span></label>
+                            <input class="form-control" required type="password" name="password" id="password" placeholder="Password">
+                            <br>
+                        
+                            <input type="date" style="display: none;" name="date">
+                            <div style="display: flex; justify-content: center;">
+                                <button  type="submit" style="background-color: #0f3887; color: white; padding: 10px 20px; border-radius: 10px; border: none;">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="{% static 'js/main.js' %}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Get the current date
+    var currentDate = new Date();
+    var formattedDate = currentDate.toISOString().split('T')[0];  // Format as YYYY-MM-DD
+
+    // Set the value of the hidden input field
+    document.querySelector('input[name="date"]').value = formattedDate;
+});
+</script>
+</body>
+</html>

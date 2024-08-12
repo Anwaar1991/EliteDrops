@@ -1,0 +1,485 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Drops -AI Generated Trending Dropshipping Products</title>
+        
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+    
+        <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        
+        <!-- Style -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+        <!--<title>Responsive Card Slider</title>-->
+
+        <!-- Swiper CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.css">
+
+        <!-- CSS -->
+        <style>
+   .container1 {
+                display: flex;
+            }
+            
+            .hamburger {
+                position: absolute;
+                top: 25px;
+                left: 20px;
+                font-size: 34px;
+                cursor: pointer;
+                z-index: 1000;
+                color: white;
+            }
+            
+            .sidebar {
+                position: fixed;
+                top: 0px;
+                left: -250px;
+                width: 250px;
+                height: 100%;
+                background-color: #333;
+                color: white;
+                padding-top: 130px;
+                transition: left 0.3s;
+                z-index: 999;
+            }
+            
+            .sidebar ul {
+                list-style-type: none;
+                padding: 0;
+            }
+            
+            .sidebar ul li {
+                padding: 15px 20px;
+            }
+            
+            .sidebar ul li a {
+                color: white;
+                text-decoration: none;
+                display: block;
+            }
+            
+            .sidebar ul li:hover {
+                background-color: #575757;
+            }
+            
+            .content {
+                flex: 1;
+                padding: 20px;
+            }
+
+
+        .c-heroImageGrid {
+            position: relative;
+            overflow: hidden;
+            height: 50vw;
+            background: #fff;
+            margin-bottom: 60px;
+        }
+        
+        .c-heroImageGrid .container {
+            display: flex;
+            align-items: flex-end;
+            position: absolute;
+            top: -20vw;
+            left: -8vw;
+            transform: rotateZ(45deg);
+            height: 100vw;
+            width: 107vw;
+        }
+        
+        .c-heroImageGrid .container .column {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .c-heroImageGrid .container .column:nth-of-type(1) {
+            border-right: 8px solid white;
+            width: 25%;
+            height: 66vw;
+        }
+        
+        .c-heroImageGrid .container .column:nth-of-type(1):hover {
+            opacity: 0.75;
+            cursor: pointer;
+        }
+        
+        .c-heroImageGrid .container .column:nth-of-type(1):before {
+            position: absolute;
+            top: 8.4vw;
+            left: 8.1vw;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transform: rotateZ(-45deg);
+            content: "";
+            width: 37vw;
+            height: 38vw;
+            background-image: url(https://images.pexels.com/photos/132037/pexels-photo-132037.jpeg?cs=srgb&dl=beach-blur-boardwalk-132037.jpg&fm=jpg);
+        }
+        
+        
+        .c-heroImageGrid .container .column:nth-of-type(2) {
+            display: flex;
+            flex-direction: column-reverse;
+            width: 75%;
+            height: 109.1vw;
+        }
+        
+        .c-heroImageGrid .container .column:nth-of-type(2) .row {
+            border-top: 8px solid #fff;
+        }
+        
+        
+        .c-heroImageGrid .container .column:nth-of-type(2) .row:nth-of-type(1) {
+            position: relative;
+            overflow: hidden;
+            height: 50vw;
+        }
+        
+        .c-heroImageGrid .container .column:nth-of-type(2) .row:nth-of-type(1):hover {
+            opacity: 0.75;
+            cursor: pointer;
+        }
+        
+        .c-heroImageGrid .container .column:nth-of-type(2) .row:nth-of-type(1):before {
+            position: absolute;
+            top: -10.1vw;
+            left: -14.3vw;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transform: rotateZ(-45deg);
+            content: "";
+            width: 65vw;
+            height: 39vw;
+            background-image: url(https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?cs=srgb&dl=arch-bridge-clouds-814499.jpg&fm=jpg);
+        }
+        
+        .c-heroImageGrid .container .column:nth-of-type(2) .row:nth-of-type(2) {
+            display: flex;
+            height: 40.5vw;
+        }
+        
+        .c-heroImageGrid .container .column:nth-of-type(2) .row:nth-of-type(3) {
+            border-top: none;
+        }
+        
+        .c-heroImageGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(1) {
+            overflow: hidden;
+            width: 30%;
+            background-color: #8B8B8A;
+        }
+        
+        .c-heroImageGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(1) .text {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            transform: rotateZ(-45deg);
+            position: relative;
+        }
+        
+        .c-heroImageGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(1) .text h6 {
+            position: absolute;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 1.35vw;
+            width: 20vw;
+            top: 16vw;
+            left: 7vw;
+            line-height: 1.55vw;
+        }
+        
+        .c-heroImageGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(1) .text p {
+            text-align: right;
+            position: absolute;
+            color: #fff;
+            font-size: 0.9vw;
+            width: 18vw;
+            top: 23.5vw;
+            left: -3.5vw;
+        }
+        
+        .c-heroImageGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(2) {
+            position: relative;
+            width: 70%;
+            border-left: 8px solid white;
+            overflow: hidden;
+        }
+        
+        .c-heroImageGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(2):hover {
+            opacity: 0.75;
+            cursor: pointer;
+        }
+        
+        .c-heroImageGrid .container .column:nth-of-type(2) .row:nth-of-type(2) div:nth-of-type(2):before {
+            position: absolute;
+            top: 0;
+            left: -40vw;
+            width: 110.1vw;
+            height: 110vw;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transform: rotateZ(-45deg);
+            content: "";
+            background-image: url(https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?cs=srgb&dl=adventure-calm-clouds-414171.jpg&fm=jpg);
+        }
+        
+        .c-heroImageGrid .container .column:nth-of-type(2) .row:nth-of-type(3) {
+            position: relative;
+            height: 18.6vw;
+            overflow: hidden;
+        }
+        
+        .c-heroImageGrid .container .column:nth-of-type(2) .row:nth-of-type(3):hover {
+            opacity: 0.75;
+            cursor: pointer;
+        }
+        
+        .c-heroImageGrid .container .column:nth-of-type(2) .row:nth-of-type(3):before {
+            position: absolute;
+            top: 7.5vw;
+            left: 25vw;
+            width: 33vw;
+            height: 27vw;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transform: rotateZ(-45deg);
+            content: "";
+            background-image: url(https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80);
+        }
+        
+          </style>
+
+</head>
+<body>
+
+    {% if user.is_authenticated %}
+    {% include 'header.html' %}
+    {% else %}
+    {% include 'web_header.html' %}
+    {% endif %}
+
+    <div class="container1" style="padding-bottom: 100px;">
+        <div class="hamburger" id="hamburger">
+            ☰
+        </div>
+        {% include 'sidebar.html' %}
+
+    </div>
+
+
+    <!-- TOP SECTION -->
+    <div class="top-banner hire_us_banner">
+        <div class="container" style="position: relative;">
+            <div class="row ">
+                <div class="col-lg-12" >
+                    <div class="row" style="display: flex; justify-content: center;">
+                        <div>
+                             <h1 style="text-align: center;">Hire Us To Manage Your Store</h1>
+                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 hire_us">
+                            <img src="{% static 'image/hr_image.webp' %}" alt="image">
+                        </div>
+                        <div class="col-md-5 hire_us1">
+                            <div class="price_card">
+                                <h4 class="font_black" style="font-weight: 900; color: #0e3684; font-size: 18px; text-align: center;">Request A Call</h4>
+                                <br>
+                                <br>
+                                    <div style="display: flex; justify-content: center;">
+                                        <form action="" method="POST" id="registrationForm">
+                                            {% csrf_token %}
+                                            <label for="username">Your Verified Email:<span style="color: red;">*</span></label>
+                                            <input class="form-control" type="email" required name="email" id="email" placeholder="Your Verified Email">
+                                            <br>
+                                            <label for="servie">Choose a Service <span style="color: red;">*</span>:</label>
+                                            <select id="service" class="form-control" name="service">
+                                                <option value="Nil">----Select Service Please---</option>
+                                                <option value="customization" required name="service">Store Customization</option>
+                                                <option value="store_development" required name="service">Store Development</option>
+                                                <option value="product_hunt" required name="service">Product Hunting</option>
+                                                <option value="seo" required name="service">Search Engine Optimization</option>
+                                                <option value="others" required name="service">Others</option>
+                                            </select>
+                                            <br>
+                                            <label for="Message">Short Message:</label>
+                                            <input class="form-control" required type="Message" name="message" id="Message" placeholder="Your Short Message">
+                                            <br>
+                                        
+                                            <input type="date" style="display: none;" name="date">
+                                            <div style="display: flex; justify-content: center;">
+                                                <button  type="submit" class="button" style="background-color: #0e3684;
+                                                border-radius: 25px;">SUBMIT</button>
+                                            </div>
+                                            <br>
+                                            
+                                          </form>
+                                    </div>
+                            </div>    
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row " >
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8 second-banner text_card">
+                    <div>
+                        <h1 style="color: #0e3684; font-size: 20px; text-align: center;">Hire Us - Get Our Preofssional Services</h1>
+                        <p class="font_black" style="text-align: justify;"> Unlock your store's full potential with our expert management services. For just $500 per month plus a 25% profit share, we handle everything from inventory to customer service, ensuring seamless operations and increased sales. Let us manage your store so you can focus on scaling your business.</p>
+                    </div>
+
+                </div>
+                <div class="col-lg-2"></div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- SECOND SECTION -->
+    <div class="second-banner" style="padding-top: 150px;">
+        <div class="container" style="position: relative;">
+            <h1 style="color: #0e3684; font-size: 20px; text-align: center;">SERVING 5K+ STORES GLOBALLY</h1>
+            <br>
+            <br>
+
+            <div class="row " >
+
+                <div class="col-lg-4">
+                    <h1 style="color: #0e3684; font-size: 2.5rem;">90%</h1>
+                    <p style="color: black;">Clients are satisfied with technical services of ELite Drop</p>
+                </div>
+                <div class="col-lg-4">
+                    <div>
+                        <h1 style="color: #0e3684; font-size: 2.5rem;">5K+</h1>
+                        <p style="color: black;">Stores are being managed by Elite Drop Professioanls</p>
+                    
+                    </div>
+
+                </div>
+                <div class="col-lg-4">
+                    <h1 style="color: #0e3684; font-size: 2.5rem;">24/7</h1>
+                    <p style="color: black;">Support for our valued Clients</p>
+                
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+        <!-- THIRD SECTION -->
+        <div class="second-banner" style=" padding-top: 30px; background-color: #f5f2f7;">
+            <div class="container" style="position: relative;">
+                <div class="row " >
+                    <div class="col-lg-2" style="display: flex; justify-content: center; margin-top: 20px;">
+                        <img src="{% static 'image/bulb.jpg' %}" alt="bulb" style="border-radius: 10px; width: 100px;">
+                    </div>
+                    <div class="col-lg-8" style="display: flex; justify-content: center; margin-top: 20px;">
+                        <div>
+                            <h1 style="color: #0e3684; font-size: 1.4rem;">DID YOU KNOW?</h1>
+                            <p style="color: black;">Elite Drop clients generate more revenues as compared to any other store. We guarantee 100% sales boost.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-2"></div>
+    
+                </div>
+            </div>
+        </div>
+
+
+    
+
+
+        {% if user.is_authenticated %}
+            {% include 'footer_dashboard.html' %}
+        {% else %}
+           <!-- FOOTER -->
+           {% include 'footer_main.html' %}
+
+        {% endif %}
+    
+
+<!-- Swiper JS -->
+<script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.js"></script>
+
+<!-- JavaScript -->
+  <!--Uncomment this line-->
+<script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/script.js"></script>
+<script>
+     
+var swiper = new Swiper(".anwarslide-content", {
+slidesPerView: 3,
+spaceBetween: 25,
+loop: true,
+centerSlide: 'true',
+fade: 'true',
+grabCursor: 'true',
+autoplay: {
+    delay: 5000, // 5000 milliseconds = 5 seconds
+    disableOnInteraction: false,
+},
+pagination: {
+  el: ".anwarswiper-pagination",
+  clickable: true,
+  dynamicBullets: true,
+},
+navigation: {
+  nextEl: ".anwarswiper-button-next",
+  prevEl: ".anwarswiper-button-prev",
+},
+
+breakpoints:{
+    0: {
+        slidesPerView: 1,
+    },
+    520: {
+        slidesPerView: 2,
+    },
+    950: {
+        slidesPerView: 3,
+    },
+},
+});
+
+
+
+            document.addEventListener("DOMContentLoaded", function() {
+        const hamburger = document.getElementById("hamburger");
+        const sidebar = document.getElementById("sidebar");
+    
+        hamburger.addEventListener("click", function() {
+            if (sidebar.style.left === "0px") {
+                sidebar.style.left = "-250px";
+            } else {
+                sidebar.style.left = "0px";
+            }
+        });
+    });
+
+</script>
+
+    <!-- FOOTER SECTION -->
+
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.sticky.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static 'image/fav.jpg' %}">
+    <meta name="description" content="FAQs - Elite Drops">
+    <title>Elite Drops - FAQs</title>
+        
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+    
+        <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        
+        <!-- Style -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+        <!--<title>Responsive Card Slider</title>-->
+
+        <!-- Swiper CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.css">
+
+        <!-- CSS -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .faq-section {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .faq {
+            margin: 1rem 0;
+        }
+        .faq-question {
+            cursor: pointer;
+            background: #f4f4f4;
+            padding: 1rem;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .faq-question:hover {
+            background: #e4e4e4;
+        }
+        .faq-answer {
+            display: none;
+            padding: 1rem;
+            border-left: 3px solid #333;
+            background: #f9f9f9;
+        }
+        .faq-section p{
+            color: black;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    {% include 'web_header.html' %}
+    <div class="container" style="padding-top: 230px;">
+        <h1>Frequently Asked Questions</h1>
+        <div class="faq-section">
+            <div class="faq">
+                <div class="faq-question">What is Elite Drop?</div>
+                <div class="faq-answer">
+                    <p>Elite Drop is a service that provides AI-powered product insights for dropshipping businesses. We offer weekly updates on trending products, detailed product descriptions, supplier information, and ad targeting suggestions to help you scale your store effortlessly.</p>
+                </div>
+            </div>
+            <div class="faq">
+                <div class="faq-question">How does Elite Drop work?</div>
+                <div class="faq-answer">
+                    <p>Our AI-powered algorithm analyzes market trends and social media data to handpick the top 10 products each week. We provide you with detailed product descriptions, supplier information, ad targeting suggestions, and more, so you can focus on selling.</p>
+                </div>
+            </div>
+            <div class="faq">
+                <div class="faq-question">What services do you offer for managing my store?</div>
+                <div class="faq-answer">
+                    <p>For $500 per month plus a 25% profit share, we offer comprehensive management services for your store. This includes handling inventory, customer service, and ensuring seamless operations to boost your sales.</p>
+                </div>
+            </div>
+            <div class="faq">
+                <div class="faq-question">How secure is my data with Elite Drop?</div>
+                <div class="faq-answer">
+                    <p>Your data is stored securely and is protected against unauthorized access, alteration, disclosure, or destruction. We use advanced security measures to ensure that your personal information is kept safe.</p>
+                </div>
+            </div>
+            <div class="faq">
+                <div class="faq-question">How often do you update the product list?</div>
+                <div class="faq-answer">
+                    <p>We update our product list weekly, providing you with the top 10 trending products poised to dominate the dropshipping market. This ensures you always have access to the latest high-potential items.</p>
+                </div>
+            </div>
+            <div class="faq">
+                <div class="faq-question">Can I cancel my subscription at any time?</div>
+                <div class="faq-answer">
+                    <p>Yes, you can cancel your subscription at any time. Simply contact our support team at <a href="mailto:support@elitedrop.net">support@elitedrop.net</a> to process your cancellation.</p>
+                </div>
+            </div>
+            <div class="faq">
+                <div class="faq-question">What is included in the weekly product updates?</div>
+                <div class="faq-answer">
+                    <p>Our weekly product updates include detailed product descriptions, direct links to suppliers, ad targeting suggestions, and sales records. This comprehensive information helps you make informed decisions and launch successful campaigns.</p>
+                </div>
+            </div>
+            <div class="faq">
+                <div class="faq-question">How do you ensure the products are trending?</div>
+                <div class="faq-answer">
+                    <p>Our AI-powered algorithm analyzes market trends, social media data, and other relevant metrics to identify products with high potential. This data-driven approach ensures that the products we recommend are trending and likely to perform well.</p>
+                </div>
+            </div>
+            <div class="faq">
+                <div class="faq-question">What kind of customer support do you offer?</div>
+                <div class="faq-answer">
+                    <p>We offer 24/7 customer support to our valued clients. Whether you have questions about our services, need assistance with your subscription, or require help with any other issue, our support team is always here to assist you.</p>
+                </div>
+            </div>
+            <div class="faq">
+                <div class="faq-question">How can I contact Elite Drop?</div>
+                <div class="faq-answer">
+                    <p>You can contact us at <a href="mailto:support@elitedrop.net">support@elitedrop.net</a>. We are always here to answer your questions and provide the assistance you need to succeed.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% include 'footer_main.html' %}
+
+
+</body>
+</html>

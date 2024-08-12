@@ -1,0 +1,20 @@
+<header role="banner" style="background-image: linear-gradient(to bottom, #255abc, #0f3887);">
+    {% load static %}
+    <nav>
+      <div class="container">
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4" style="display: flex; justify-content: center; padding-top: 10px;">
+                <a  href="{% url 'dashboard' %}" >
+                    <img src="{% static 'image/logo.webp' %}" alt="logo" style="width: 120px;">
+                </a>
+            </div>
+            <div class="col-sm-4" style="display: flex; justify-content: end;">
+                {%if user.is_authenticated %}
+                    <h5 style="color: white; font-weight: bolder; padding-top: 10px;">Welcome {{request.user.username|capfirst }}!</h5>
+                {%endif%}
+            </div>
+        </div>
+      </div>
+    </nav>
+</header>

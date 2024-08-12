@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="{% static 'image/fav.jpg' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribers</title>
+           
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+    
+        <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        
+        <!-- Style -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+        <!--<title>Responsive Card Slider</title>-->
+
+        <!-- Swiper CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.css">
+
+        <!-- CSS -->
+         <style>
+.container1 {
+    display: flex;
+    height: 100vh;
+}
+
+.hamburger {
+    position: absolute;
+    top: 25px;
+    left: 20px;
+    font-size: 34px;
+    cursor: pointer;
+    z-index: 1000;
+    color: white;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0px;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    padding-top: 130px;
+    transition: left 0.3s;
+    z-index: 999;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 15px 20px;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar ul li:hover {
+    background-color: #575757;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+}
+         </style>
+</head>
+<body style="background-color: #0f3887;">
+    {% include 'header.html' %}
+
+    {% if user.is_authenticated and user.is_staff %}
+        <div class="container1">
+            <div class="hamburger" id="hamburger">
+                ☰
+            </div>
+            {% include 'sidebar.html' %}
+            <div class="content" style="padding-top: 180px;">
+
+                <div class="container ">
+                    <h3 style="text-align: center; color: white;">OUR SUBSCRIBERS</h3>
+
+
+
+                    <div class="row reg_form mb-4 product_card" style="display: flex; justify-content: center;">
+                        <br>
+                        <br>
+                        <div class="col-sm-12">
+                            <form method="post">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-sm-3">                                <label for="start_date" class="sec_date "><strong>From: </strong></label>
+                                        <input type="datetime-local" class="sec_date form-control date_filter input_date xyz"   id="start_date" style="width: 220px;" name="start_date">
+                                  
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label for="end_date" class=" sec_date">&nbsp; <strong>To: </strong></label>
+                                        <input type="datetime-local" class="sec_date form-control date_filter input_date xyz"   id="end_date" style="width: 220px;" name="end_date">
+                                        &nbsp;</div>
+                                    <div class="col-sm-3">                                
+                                        <label for="niche" style="font-weight: bold;">Choose a niche:</label>
+                                        <select id="niche" class="form-control" style="width: 220px; " name="niche">
+                                            <option value="Nil" class="form-control">----Select Your Niche---</option>
+                                            {% for n in niche %}
+                                                <option value="{{n.niche_name}}" class="form-control" name="niche">{{n.niche_name}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3"> 
+                                        <input type="submit" class="btn btn-primary"  value="Search" style="margin-top: 32px;"></div>
+                                    </div>
+                             
+    
+                              
+                            </form>
+                        </div>
+                       
+                        {% if subscribed_profiles %}
+                        <table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 16px; text-align: left;">
+                            <thead>
+                                <tr style="background-color: #f2f2f2; color: #333; border-bottom: 2px solid #ddd;">
+                                    <th style="padding: 10px; border: 1px solid #ddd;">S.No</th>
+                                    <th style="padding: 10px; border: 1px solid #ddd;">Name</th>
+                                    <th style="padding: 10px; border: 1px solid #ddd;">Username</th>
+                                    <th style="padding: 10px; border: 1px solid #ddd;">Email</th>
+                                    <th style="padding: 10px; border: 1px solid #ddd;">Niche</th>
+                                    <th style="padding: 10px; border: 1px solid #ddd;">Plan</th>
+                                    <th style="padding: 10px; border: 1px solid #ddd;">Registered On</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for p in subscribed_profiles %}
+                                
+                                <tr>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">{{ forloop.counter }}</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">{{ p.name }}</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">{{ p.username }}</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd; ">{{ p.email }}</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd; ">{{ p.niche.niche_name }}</td>
+                                    {% if p.p1 %}
+                                    <td style="padding: 10px; border: 1px solid #ddd; ">Basic</td>
+                                    {% elif p.p2 %}
+                                    <td style="padding: 10px; border: 1px solid #ddd; ">Premium</td>
+                                    {% elif p.p3 %}
+                                    <td style="padding: 10px; border: 1px solid #ddd; ">Huhu</td>
+                                    {% endif %}
+                                    <td style="padding: 10px; border: 1px solid #ddd;">{{ p.joining_date}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        {% else %}
+                            <h5 style="text-align: center; color: red;">No Users found!</h5>
+                        {% endif %}
+                    </div>
+                    </div>
+
+                </div>
+
+                
+            </div>
+            
+            
+            
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+        const hamburger = document.getElementById("hamburger");
+        const sidebar = document.getElementById("sidebar");
+    
+        hamburger.addEventListener("click", function() {
+            if (sidebar.style.left === "0px") {
+                sidebar.style.left = "-250px";
+            } else {
+                sidebar.style.left = "0px";
+            }
+        });
+    });
+    
+        </script>
+    {% else %}
+      <div class="container">
+        <div class="row" style="height: 400px; display: flex; align-items: center; justify-content: center;">
+            <h5 style="color: white;">You are can't access this page, because you are not Staff Member/Admin </h5>
+        </div>
+      </div>
+    {% endif %}
+</body>
+</html>

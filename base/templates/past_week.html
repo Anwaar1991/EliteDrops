@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="{% static 'image/fav.jpg' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Week Products</title>
+           
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+    
+        <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        
+        <!-- Style -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+        <!--<title>Responsive Card Slider</title>-->
+
+        <!-- Swiper CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.css">
+
+        <!-- CSS -->
+         <style>
+.container1 {
+    display: flex;
+    height: 100vh;
+}
+
+.hamburger {
+    position: absolute;
+    top: 25px;
+    left: 20px;
+    font-size: 34px;
+    cursor: pointer;
+    z-index: 1000;
+    color: white;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0px;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    padding-top: 130px;
+    transition: left 0.3s;
+    z-index: 999;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 15px 20px;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar ul li:hover {
+    background-color: #575757;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+}
+         </style>
+</head>
+<body style="background-color: #0f3887;">
+    {% include 'header.html' %}
+    {% if user.is_authenticated %}
+    {% if profile.fee_paid %}
+        <div class="container1">
+            <div class="hamburger" id="hamburger">
+                ☰
+            </div>
+            {% include 'sidebar.html' %}
+            <div class="content" style="padding-top: 180px;">
+
+                <div class="container ">
+                    <h3 style="text-align: center; color: white;">TWO WEEKS PRODUCTS - {{profile.niche.niche_name}}</h3>
+                    <!-- LOOP WILL GO HERE -->
+                    {% if products %}
+                    {% for p in products %}
+                    <div class="row product_card">
+                        <div class="col-md-4" style="display: flex; justify-content: center;">
+                            <img src="{{ p.product_image.url }}" alt="product Image" class="product-image">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="row" style="display: flex; justify-content: center;">
+                                        <h1 style="text-align:center; color: black;">{{p.title}}</h1>
+                                    </div>
+                                    <div class="row costs">
+                                        <div class="col-sm-4"><h5 style="text-align: center; font-weight: 600;">Cost {{p.purchase_cost}}$</h5></div>
+                                        <div class="col-sm-4"><h5 style="text-align: center; font-weight: 600;">Selling {{p.selling_cost}}$</h5></div>
+                                        <div class="col-sm-4"><h5 style="text-align: center; font-weight: 600;">Profit {{p.profit}}$</h5></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="row" style="display: flex; justify-content: center;">
+                                        <a href="{{p.amazon_link}}" class="button1" style="display: block;">Amazon Link</a>
+                                    </div>
+                                    <br>
+                                    <div class="row" style="display: flex; justify-content: center;">
+                                        <a href="{{p.ebay_link}}" class="button1" style="display: block;">Ebay Link</a>
+                                    </div>
+                                    <br><br>
+                                </div>
+                                <div class="col-md-11 fb_targeting" style="background-color: #255abc; padding: 15px; border-radius: 10px;">
+                                    <h4>FB Targeting:</h4>
+                                    <div class="row">
+                                        <div class="col-md-6" style="padding-left: 30px;">
+                                            <div class="row"><h5>🌎 Country {{p.country}}</h5></div>
+                                            <div class="row"><h5><strong>♀️♂️ </strong>Gender {{p.gender}}</h5></div>
+                                            <div class="row"><h5>👨‍👨‍👦  Age Range {{p.age_range}}</h5></div>
+                                            <div class="row"><h5>👨🏻‍👩🏻‍👦🏻‍👦🏻 Audience {{p.audiance}}</h5></div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <h5>🧗‍♀️ Interests:</h5>
+                                            </div>
+                                            <div class="row">
+                                                <p>Slippers, Engaged Shoppers</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row" style="margin-top: 10px;">
+                                    <div class="col-lg-12">
+                                        <div class="row" style="margin-left: 15px;">
+                                            <h4>Approximate CPA: {{approximate_CPA}}</h4>
+                                        </div>
+                                        <div class="row" style="margin-left: 15px;">
+                                            <h4>Saturation: {{p.saturation}}</h4>
+                                        </div>
+                                        <div class="row" style="margin-left: 15px;">
+                                            <a href="{{fb_ads}}" class="button1" style="display: block; margin-right: 10px;">FB Ads</a>
+                                            <a href="{{videos}}" class="button1" style="display: block; margin-right: 10px;">Video Ads</a>
+                                            <a href="{{stores_selling_it}}" class="button1" style="display: block; margin-right: 10px;">Stores Selling It</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr style="height: 2px; background-color: white; margin: 20px 0px; ">
+                    
+                    {% endfor %}
+                    {% else %}
+                    <div class="row product_card" style="display: flex; justify-content: center;"> 
+                        <h5 style="color: red;">No Products Added Yet!</h5>
+                    </div>
+                    {% endif %}
+                    <!-- LOOP ENDS -->
+
+                </div>
+
+                
+            </div>
+            
+            
+            
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+        const hamburger = document.getElementById("hamburger");
+        const sidebar = document.getElementById("sidebar");
+    
+        hamburger.addEventListener("click", function() {
+            if (sidebar.style.left === "0px") {
+                sidebar.style.left = "-250px";
+            } else {
+                sidebar.style.left = "0px";
+            }
+        });
+    });
+    
+        </script>
+    {% else %}
+      <div class="container">
+        <div class="row" style="height: 400px; display: flex; align-items: center; justify-content: center;">
+            <h5 style="color: white;">You are registered but can't access this page, please <a href="{% url 'pay-now' id %}">Pay Fee</a> to see Products </h5>
+        </div>
+      </div>
+    {% endif %}
+    {% else %}
+      <div class="container">
+        <div class="row" style="height: 400px; display: flex; align-items: center; justify-content: center;">
+            <h5 style="color: white;">You can't access this page, please <a href="{% url 'register' %}">register </a> to see Products </h5>
+        </div>
+      </div>
+    {%endif%}
+</body>
+</html>

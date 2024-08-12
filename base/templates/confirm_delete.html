@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Delete Product</title>
+           
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+    
+        <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        
+        <!-- Style -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+        <!--<title>Responsive Card Slider</title>-->
+
+        <!-- Swiper CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.css">
+
+        <!-- CSS -->
+         <style>
+.container1 {
+    display: flex;
+    height: 100vh;
+}
+
+.hamburger {
+    position: absolute;
+    top: 25px;
+    left: 20px;
+    font-size: 34px;
+    cursor: pointer;
+    z-index: 1000;
+    color: white;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0px;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    padding-top: 130px;
+    transition: left 0.3s;
+    z-index: 999;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 15px 20px;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar ul li:hover {
+    background-color: #575757;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+}
+         </style>
+</head>
+<body style="background-color: #0f3887;">
+    <header role="banner" style="background-image: linear-gradient(to bottom, #255abc, #0f3887);">
+        <nav>
+          <div class="container">
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4" style="display: flex; justify-content: center; padding-top: 10px;">
+                    <a  href="index.html" >
+                        <img src="{% static 'image/logo.webp' %}" alt="logo" style="width: 120px;">
+                    </a>
+                </div>
+                <div class="col-sm-4" style="display: flex; justify-content: end;">
+                    {%if user.is_authenticated %}
+                        <h5 style="color: white; font-weight: bolder; padding-top: 10px;">Welcome {{request.user.username|capfirst }}!</h5>
+                    {%endif%}
+                </div>
+            </div>
+          </div>
+        </nav>
+    </header>
+    {% if user.is_authenticated and user.is_staff %}
+        <div class="container1">
+            <div class="hamburger" id="hamburger">
+                ☰
+            </div>
+            {% include 'sidebar.html' %}
+            <div class="content" style="padding-top: 180px;">
+
+                <div class="container ">
+                    <h3 style="text-align: center; color: white;">DELETE PRODUCTS</h3>
+                    <div class="row reg_form mb-4 product_card" style="display: flex; justify-content: center;">
+                        {% if products %}
+                        <table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 16px; text-align: left;">
+                            <thead>
+                                <tr style="background-color: #f2f2f2; color: #333; border-bottom: 2px solid #ddd;">
+                                    <th style="padding: 10px; border: 1px solid #ddd;">S.No</th>
+                                    <th style="padding: 10px; border: 1px solid #ddd;">Product Image</th>
+                                    <th style="padding: 10px; border: 1px solid #ddd;">Product Title</th>
+                                    <th style="padding: 10px; border: 1px solid #ddd;">Date Added</th>
+                                    <th style="padding: 10px; border: 1px solid #ddd;">Edit</th>
+                                    <th style="padding: 10px; border: 1px solid #ddd;">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for p in products %}
+                                <tr>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">{{ forloop.counter }}</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">
+                                        <img src="{{p.product_image.url}}" alt="Product Image" style="width: 100px; height: auto;">
+                                    </td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">{{ p.title }}</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">{{ p.date_added }}</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd; "><a href="" class="btn btn-primary" style="margin-left: 15px ; width: 80px; color: white; text-decoration: none;">Edit</a></td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;"><a href="{% url 'confirm_delete' p.id %}" class="btn btn-danger" style="width: 80px; color: white; text-decoration: none;">Delete</a></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        {% else %}
+                        <h5 style="text-align: center;">No Products Added Yet!</h5>
+                        {% endif %}
+                    </div>
+                    </div>
+
+                </div>
+
+                
+            </div>
+            
+            
+            
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+        const hamburger = document.getElementById("hamburger");
+        const sidebar = document.getElementById("sidebar");
+    
+        hamburger.addEventListener("click", function() {
+            if (sidebar.style.left === "0px") {
+                sidebar.style.left = "-250px";
+            } else {
+                sidebar.style.left = "0px";
+            }
+        });
+    });
+    
+        </script>
+    {% else %}
+      <div class="container">
+        <div class="row" style="height: 400px; display: flex; align-items: center; justify-content: center;">
+            <h5 style="color: white;">You are can't access this page, because you are not Staff Member/Admin </h5>
+        </div>
+      </div>
+    {% endif %}
+</body>
+</html>

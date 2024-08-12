@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static 'image/fav.jpg' %}">
+    <meta name="description" content="About Us - Elite Drop details">
+    <title>About Us - Elite Drops</title>
+           
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+    
+        <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        
+        <!-- Style -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+        <!--<title>Responsive Card Slider</title>-->
+
+        <!-- Swiper CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.css">
+
+        <!-- CSS -->
+
+</head>
+<body style="background-color: #0f3887;">
+  {% include 'web_header.html' %}
+
+
+
+                <div class="container " style="padding-top: 100px; padding-bottom: 50px;">
+                        <div class="row reg_form mb-4 product_card" style="display: flex; justify-content: center;">
+                            <div class="col-sm-8 form-col form_inputs">
+                                <h2 style="text-align: center;">About Us</h2>
+                                <br>
+                                <p style="color: black; text-align: justify;">
+
+                                  Welcome to Elite Drop, your ultimate destination for AI-powered product insights tailored for the modern dropshipping entrepreneur. With over 1000 subscribers who have successfully scaled their businesses, we are dedicated to transforming the eCommerce landscape through innovative solutions and expert guidance.
+                                  
+                                  At Elite Drop, our mission is to empower eCommerce entrepreneurs by providing them with the tools and insights needed to stay ahead of the competition. We leverage cutting-edge AI technology to analyze market trends and social media data, delivering a curated list of top-performing products each week. Our comprehensive research and detailed product information save you time and effort, allowing you to focus on what you do best – growing your business.
+                                  </p>
+                                  <p style="color: black; text-align: justify; font-weight: 800;">Why Choose Elite Drop?</p>
+                                 
+                                  <p style="color: black; text-align: justify;">AI-Driven Selections: Our sophisticated algorithms handpick the best products based on real-time data, ensuring you always have access to the latest trends.
+                                  </p>
+                                  <p style="color: black; text-align: justify;"> Weekly Updates: Stay ahead of the curve with our weekly updates featuring the top 10 trending products poised to dominate the market.
+                                  </p>
+                                  <p style="color: black; text-align: justify;">Expert Insights: Benefit from our in-depth product descriptions, supplier information, and ad targeting suggestions, all designed to maximize your sales potential.
+                                  </p>
+                                  <p style="color: black; text-align: justify;">Diverse Product Range: Our extensive research spans multiple platforms, providing you with a wide array of high-potential products.
+                                  </p>
+                                  <p style="color: black; text-align: justify;"> In addition to our core services, we also offer specialized assistance with Shopify customizations, product hunting, and more. Our dedicated team is committed to helping you achieve extraordinary results, turning your dropshipping store into a thriving eCommerce empire.
+                                  
+                                  </p>
+                                    Join the Elite Drop community today and unlock the secrets to effortless growth and unparalleled success in the dropshipping world. Let us help you turn your business dreams into reality.</p>
+                                    <p style="color: black; text-align: justify;">
+                                       
+                                      <a href="mailto:support@elitedrop.net">Connect now!</a>
+                                    </p>
+                            </div>
+                    </div>
+
+                </div>
+
+
+                   <!-- FOOTER -->
+                   {% include 'footer_main.html' %}
+
+    
+
+<!-- Swiper JS -->
+<script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.js"></script>
+
+<!-- JavaScript -->
+  <!--Uncomment this line-->
+<script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/script.js"></script>
+<script>
+     
+var swiper = new Swiper(".anwarslide-content", {
+slidesPerView: 3,
+spaceBetween: 25,
+loop: true,
+centerSlide: 'true',
+fade: 'true',
+grabCursor: 'true',
+autoplay: {
+    delay: 5000, // 5000 milliseconds = 5 seconds
+    disableOnInteraction: false,
+},
+pagination: {
+  el: ".anwarswiper-pagination",
+  clickable: true,
+  dynamicBullets: true,
+},
+navigation: {
+  nextEl: ".anwarswiper-button-next",
+  prevEl: ".anwarswiper-button-prev",
+},
+
+breakpoints:{
+    0: {
+        slidesPerView: 1,
+    },
+    520: {
+        slidesPerView: 2,
+    },
+    950: {
+        slidesPerView: 3,
+    },
+},
+});
+
+</script>
+
+    <!-- FOOTER SECTION -->
+
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.sticky.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+ 
+</body>
+</html>

@@ -1,0 +1,53 @@
+<header role="banner" style="background-image: linear-gradient(to bottom, #255abc, #0f3887);">
+    {% load static %}
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="{% static 'image/logo.webp' %}" alt="logo" style="width: 120px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample05">
+          <ul class="navbar-nav ml-auto pl-lg-5 pl-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'guide' %}">Guide</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'aboutus' %}">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contactus' %}">Contact Us</a>
+            </li>
+
+          </ul>
+
+          <ul class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
+            <li class="nav-item cta-btn" style="display: flex; justify-content: center;">
+              <a class="nav-link" href="{% url 'signout' %}" style="background-color: #0e3684;
+              border-radius: 25px;
+                box-shadow: -10px 10px 5px black;">Log out</a>
+            </li>
+            {% else %}
+            <li class="nav-item cta-btn" style="display: flex; justify-content: center; margin-left: 10px; margin-top: 5px; ">
+              <a class="nav-link" href="{% url 'signin' %}" style="background-color: #255abc;
+              border-radius: 25px; width: 120px;
+                box-shadow: -10px 10px 5px black; display: flex; justify-content: center;">Sign In</a>
+            </li>
+            <li class="nav-item cta-btn" style="display: flex; justify-content: center; margin-left: 10px; margin-top: 5px; ">
+              <a class="nav-link" href="{% url 'register' %}" style="background-color: #0e3684;
+              border-radius: 25px;
+                box-shadow: -10px 10px 5px black;">Get Started</a>
+            </li>
+            {% endif %}
+          </ul>
+          
+        </div>
+      </div>
+    </nav>
+</header>

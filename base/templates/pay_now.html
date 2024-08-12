@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="{% static 'image/fav.jpg' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Membership Fee</title>
+           <!-- Required meta tags -->
+           <meta charset="utf-8">
+           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+           
+           <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+       
+           <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+       
+           <!-- Bootstrap CSS -->
+           <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+           
+           <!-- Style -->
+           <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+           <!--<title>Responsive Card Slider</title>-->
+    
+           <!-- Swiper CSS -->
+           <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.css">
+    
+           <!-- CSS -->
+</head>
+<body style="height: 100vh;">
+    <header role="banner" style="background-image: linear-gradient(to bottom, #255abc, #0f3887);">
+      <nav>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4"></div>
+              
+              <div class="col-sm-4" style="display: flex; justify-content: center; padding-top: 10px;">
+                  <a  href="{% url 'dashboard' %}" >
+                      <img src="{% static 'image/logo.webp' %}" alt="logo" style="width: 120px;">
+                  </a>
+              </div>
+              <div class="col-sm-4" style="display: flex; justify-content: end;">
+                 
+                     
+              </div>
+          </div>
+        </div>
+      </nav>
+  </header>
+  
+      <div class="container" style="padding-top: 130px; height: 100vh; display: flex; justify-content: center; align-items: center;">
+          <div class="row">
+              <div class="col-md-7" style="display: flex; justify-content: center; align-items: center;">
+                  <div class="row" >
+                      <div >
+                          <img src="{% static 'image/logo.webp' %}" alt="logo" style="width: 300px;">
+                      </div>
+                      <br>
+                      <br>
+
+                      <div style="margin-top: 20px;">
+                          <p style="color: #0f3887;">You are just one step away from unlocking the power of AI-driven insights! Complete your subscription to gain exclusive access to the top 10 winning dropshipping products of this week, meticulously selected by our advanced AI. Elevate your business with data-backed product choices and stay ahead of the competition. Secure your edge today and watch your success soar!</p>
+                      </div>
+                  </div>
+                  
+              </div>
+              <div class="col-sm-5 reg_form_div">
+                    <div class="row reg_form mb-4">
+                        <div class="col-sm-10 form-col form_inputs">
+                            <div class="row login_form">
+                                <div class="col-md-10 form-col form_inputs mt-5 ml-5">
+                                    <form method="post">
+                                        {% csrf_token %}
+                                        <button type="submit" id="checkout-button" class="button1">Checkout</button>
+                                    </form>
+                                
+                                    <script src="https://js.stripe.com/v3/"></script>
+                                    <script>
+                                        const stripe = Stripe('{{ STRIPE_PUBLIC_KEY }}');
+                                        document.getElementById('checkout-button').addEventListener('click', async (e) => {
+                                            e.preventDefault();
+                                            const { error } = await stripe.redirectToCheckout({
+                                                sessionId: '{{ session_id }}',
+                                            });
+                                            if (error) {
+                                                console.error('Error:', error);
+                                            }
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  
+  <script src="{% static 'js/main.js' %}"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+      // Get the current date
+      var currentDate = new Date();
+      var formattedDate = currentDate.toISOString().split('T')[0];  // Format as YYYY-MM-DD
+  
+      // Set the value of the hidden input field
+      document.querySelector('input[name="date"]').value = formattedDate;
+  });
+  </script>
+  </body>
+</html>

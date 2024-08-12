@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static 'image/fav.jpg' %}">
+    <meta name="description" content="Contact Us - Let us know!">
+    <title>Contact Us</title>
+           
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+    
+        <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        
+        <!-- Style -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+        <!--<title>Responsive Card Slider</title>-->
+
+        <!-- Swiper CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.css">
+
+        <!-- CSS -->
+        <style>
+            .container1 {
+                display: flex;
+            }
+            
+            .hamburger {
+                position: absolute;
+                top: 25px;
+                left: 20px;
+                font-size: 34px;
+                cursor: pointer;
+                z-index: 1000;
+                color: white;
+            }
+            
+            .sidebar {
+                position: fixed;
+                top: 0px;
+                left: -250px;
+                width: 250px;
+                height: 100%;
+                background-color: #333;
+                color: white;
+                padding-top: 130px;
+                transition: left 0.3s;
+                z-index: 999;
+            }
+            
+            .sidebar ul {
+                list-style-type: none;
+                padding: 0;
+            }
+            
+            .sidebar ul li {
+                padding: 15px 20px;
+            }
+            
+            .sidebar ul li a {
+                color: white;
+                text-decoration: none;
+                display: block;
+            }
+            
+            .sidebar ul li:hover {
+                background-color: #575757;
+            }
+            
+            .content {
+                flex: 1;
+                padding: 20px;
+            }
+                     </style>
+
+</head>
+
+<body style="background-color: #0f3887;">
+    {% if user.is_authenticated %}
+    {% include 'header.html' %}
+    {% else %}
+    {% include 'web_header.html' %}
+    {% endif %}
+    
+    {% if user.is_authenticated %}
+    <div class="container1" style="padding-bottom: 100px;">
+        <div class="hamburger" id="hamburger">
+            ☰
+        </div>
+        {% include 'sidebar.html' %}
+        <div class="content" style="padding-top: 100px; padding-bottom: 50px ;">
+
+            <div class="container ">
+                        <h3 style="text-align: center; color: white;">CONTACT US</h3>
+                                      <br>
+                        <h6 style="text-align: center; color: white;">Mail us <a style="color:pink;" href="mailto:support@elitedrop.net">Now!</a> </h6>
+
+                            <div class="row reg_form mb-4 product_card" style="display: flex; justify-content: center;">
+                                <div class="col-sm-8 form-col form_inputs">
+                                    {% if success %}
+                                    <h5 style="text-align: center; color: green; font-weight: 900;">{{success}}</h5>
+                                    {% endif %}
+                                    
+                                    <form action="" method="POST" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <label for="name">Enter Your Name:<span style="color: red;">*</span> </label>
+                                        <input class="form-control" type="text" required name="name" id="name" placeholder="Your Name">
+                                        <br>
+                                        <label for="email">Enter Your Email: <span style="color: red;">*</span></label>
+                                        <input class="form-control" required type="email" name="email" id="email" placeholder="Email">
+                                        <br>
+                                        <label for="message">Your Message:<span style="color: red;">*</span></label>
+                                        <textarea name="message" id="message" class="form-control" placeholder="Your  Message"></textarea>
+                                        <br>
+                                        <div style="display: flex; justify-content: center;">
+                                            <button  type="submit" style="background-color: #0f3887; color: white; padding: 10px 20px; border-radius: 10px; border: none;">Send</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <br>
+                        <h6 style="text-align: center; color: white;">For any queries or unsubscribe membership, write us!</h6>
+
+
+            </div>
+        </div>
+    </div>
+    {% else %}
+        <div class="container " style="padding-top: 180px; padding-bottom: 100px;">
+            <h3 style="text-align: center; color: white;">CONTACT US</h3>
+            <br>
+            <h6 style="text-align: center; color: white;">Mail us <a href="support@elitedrop.net" style="color:pink;">Now!</a> </h6>
+
+                <div class="row reg_form mb-4 product_card" style="display: flex; justify-content: center;">
+                    <div class="col-sm-8 form-col form_inputs">
+                        {% if success %}
+                        <h5 style="text-align: center; color: green; font-weight: 900;">{{success}}</h5>
+                        {% endif %}
+                        
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <label for="name">Enter Your Name:<span style="color: red;">*</span> </label>
+                            <input class="form-control" type="text" required name="name" id="name" placeholder="Your Name">
+                            <br>
+                            <label for="email">Enter Your Email: <span style="color: red;">*</span></label>
+                            <input class="form-control" required type="email" name="email" id="email" placeholder="Email">
+                            <br>
+                            <label for="message">Your Message:<span style="color: red;">*</span></label>
+                            <textarea name="message" id="message" class="form-control" placeholder="Your message"></textarea>
+                            <br>
+                            <div style="display: flex; justify-content: center;">
+                                <button  type="submit" style="background-color: #0f3887; color: white; padding: 10px 20px; border-radius: 10px; border: none;">Send</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <br>
+            <h6 style="text-align: center; color: white;">For any queries or unsubscribe membership, write us!</h6>
+
+
+        </div>
+    {% endif %}
+
+        {% if user.is_authenticated %}
+            {% include 'footer_dashboard.html' %}
+        {% else %}
+           <!-- FOOTER -->
+           {% include 'footer_main.html' %}
+
+        {% endif %}
+
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+        const hamburger = document.getElementById("hamburger");
+        const sidebar = document.getElementById("sidebar");
+    
+        hamburger.addEventListener("click", function() {
+            if (sidebar.style.left === "0px") {
+                sidebar.style.left = "-250px";
+            } else {
+                sidebar.style.left = "0px";
+            }
+        });
+    });
+    
+        </script>
+
+        
+<!-- Swiper JS -->
+<script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.js"></script>
+
+<!-- JavaScript -->
+  <!--Uncomment this line-->
+<script src="//cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/script.js"></script>
+<script>
+     
+var swiper = new Swiper(".anwarslide-content", {
+slidesPerView: 3,
+spaceBetween: 25,
+loop: true,
+centerSlide: 'true',
+fade: 'true',
+grabCursor: 'true',
+autoplay: {
+    delay: 5000, // 5000 milliseconds = 5 seconds
+    disableOnInteraction: false,
+},
+pagination: {
+  el: ".anwarswiper-pagination",
+  clickable: true,
+  dynamicBullets: true,
+},
+navigation: {
+  nextEl: ".anwarswiper-button-next",
+  prevEl: ".anwarswiper-button-prev",
+},
+
+breakpoints:{
+    0: {
+        slidesPerView: 1,
+    },
+    520: {
+        slidesPerView: 2,
+    },
+    950: {
+        slidesPerView: 3,
+    },
+},
+});
+
+</script>
+
+    <!-- FOOTER SECTION -->
+
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.sticky.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+ 
+
+</body>
+</html>

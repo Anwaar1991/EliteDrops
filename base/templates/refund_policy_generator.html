@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static 'image/fav.jpg' %}">
+    <meta name="description" content="Generate Free Return Policies with our Tool">
+    <title>Elite Drops - Free Return Policy Generator Tool</title>
+           
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!--<title>Responsive Card Slider</title>-->
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.css">
+
+    <!-- CSS -->
+     <style>
+        .containerP {
+            display: flex;
+            width: 90%;
+            max-width: 1200px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .containerP h1,h2,span,h3,h4,h5,h6{
+            color: black;
+        }
+        .containerP .form-container, .policy-container {
+            padding: 20px;
+        }
+        .containerP .form-container {
+            flex: 1;
+            background-color: #f8f9fa;
+        }
+        .containerP .policy-container {
+            flex: 2;
+            border-left: 1px solid #ccc;
+            overflow-y: auto;
+        }
+        .containerP .form-group {
+            margin-bottom: 15px;
+        }
+        .containerP label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .containerP input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .containerP button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #28a745;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .containerP button:hover {
+            background-color: #218838;
+        }
+        .containerP #copyButton {
+            background-color: #007bff;
+        }
+        .containerP #copyButton:hover {
+            background-color: #0056b3;
+        }
+        .containerP .policy-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        @media (max-width: 768px) {
+            .containerP .containerP {
+                flex-direction: column;
+            }
+            .containerP .policy-container {
+                border-left: none;
+                border-top: 1px solid #ccc;
+            }
+        }
+        .policy-container p{
+            color: black;
+        }
+     </style>
+
+</head>
+<body style="background-color: #0f3887;">
+  {% include 'web_header.html' %}
+
+
+<div style="display: flex; justify-content: center; padding-top: 180px;">
+    <div class="containerP">
+        <div class="form-container">
+            <h2>Enter your company & Policy information</h2>
+            <div class="form-group">
+                <label for="storeWebsite">Store website *</label>
+                <input type="text" id="storeWebsite" placeholder="Please enter the store website">
+            </div>
+            <div class="form-group">
+                <label for="companyName">Company name *</label>
+                <input type="text" id="companyName" placeholder="Please enter the company name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email address *</label>
+                <input type="email" id="email" placeholder="Please enter the email address">
+            </div>
+            <div class="form-group">
+                <label for="country">Country/Region *</label>
+                <input type="text" id="country" placeholder="Please enter the country/region">
+            </div>
+            <div class="form-group">
+                <label for="state">State/Province *</label>
+                <input type="text" id="state" placeholder="Please enter state/province">
+            </div>
+            <div class="form-group">
+                <label for="city">City *</label>
+                <input type="text" id="city" placeholder="Please enter the city">
+            </div>
+            <div class="form-group">
+                <label for="zip">Zip/postal code *</label>
+                <input type="text" id="zip" placeholder="Please enter the zip/postal code">
+            </div>
+            <div class="form-group">
+                <label for="address">Address *</label>
+                <input type="text" id="address" placeholder="Please enter the address">
+            </div>
+            <button onclick="populatePolicy()" style="margin-top: 10px;">Generate return policy</button>
+            
+            <button id="copyButton" onclick="copyPolicy()" style="margin-top: 10px;">Copy to clipboard</button>
+        </div>
+        <div class="policy-container" style="max-height: 150vh; overflow-y: scroll;">
+            <h2>Generated Return Policy Template</h2>
+            <div id="policyContent" class="policy-content">
+                <h1 id="companyNamePlaceholder">[Company name]</h1>
+                <p>This Return Policy describes how you can return items when you make a purchase from <span id="storeWebsitePlaceholder">[Store website]</span> (the “Site”).</p>
+                <h2>RETURNS</h2>
+                <p>We have a 30-day return policy, which means you have 30 days after receiving your item to request a return.</p>
+                <p>To be eligible for a return, your item must be in the same condition that you received it, unworn or unused, with tags, and in its original packaging. You'll also need the receipt or proof of purchase.</p>
+                <p>To start a return, you can contact us at <span id="emailPlaceholder">[Email address]</span>. Please note that returns will need to be sent to the following address:</p>
+                <p><span id="addressPlaceholder">[Address]</span>, <span id="cityPlaceholder">[City]</span>, <span id="statePlaceholder">[State/Province]</span>, <span id="zipPlaceholder">[Zip/postal code]</span>, <span id="countryPlaceholder">[Country/Region]</span></p>
+                <p>If your return is accepted, we’ll send you a return shipping label, as well as instructions on how and where to send your package. Items sent back to us without first requesting a return will not be accepted. Please note that if your country of residence is not United States, shipping your goods may take longer than expected.</p>
+                <p>You can always contact us for any return questions at <span id="emailPlaceholder">[Email address]</span>.</p>
+                <h2>DAMAGES AND ISSUES</h2>
+                <p>Please inspect your order upon receipt and contact us immediately if the item is defective, damaged, or if you receive the wrong item, so that we may evaluate the issue and make it right.</p>
+                <h2>CERTAIN TYPES OF ITEMS</h2>
+                <p>Certain types of items cannot be returned, like perishable goods (such as food, flowers, or plants), custom products (such as special orders or personalized items), and personal care goods (such as beauty products). We also do not accept returns for hazardous materials, flammable liquids, or gases. Please get in touch if you have questions or concerns about your specific item.</p>
+                <p>Unfortunately, we cannot accept returns on sale items or gift cards.</p>
+                <h2>EXCHANGES</h2>
+                <p>The fastest way to ensure you get what you want is to return the item you have, and once the return is accepted, make a separate purchase for the new item.</p>
+                <h2>EUROPEAN UNION 14 DAY COOLING OFF PERIOD</h2>
+                <p>Notwithstanding the above, if merchandise is being shipped into the European Union, you have the right to cancel or return your order within 14 days for any reason and without justification. As above, your item must be in the same condition that you received it, unworn or unused, with tags, and in its original packaging. You’ll also need the receipt or proof of purchase.</p>
+                <h2>REFUNDS</h2>
+                <p>We will notify you once we’ve received and inspected your return, and let you know if the refund was approved or not. If approved, you’ll be automatically refunded on your original payment method within 10 business days. Please remember it can take some time for your bank or credit card company to process and post the refund too.</p>
+                <p>If more than 15 business days have passed since we’ve approved your return, please contact us at <span id="emailPlaceholder">[Email address]</span>.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function populatePolicy() {
+        var storeWebsite = document.getElementById("storeWebsite").value;
+        var companyName = document.getElementById("companyName").value;
+        var email = document.getElementById("email").value;
+        var country = document.getElementById("country").value;
+        var state = document.getElementById("state").value;
+        var city = document.getElementById("city").value;
+        var zip = document.getElementById("zip").value;
+        var address = document.getElementById("address").value;
+
+        document.getElementById("storeWebsitePlaceholder").innerText = storeWebsite;
+        document.getElementById("companyNamePlaceholder").innerText = companyName;
+        document.querySelectorAll("#emailPlaceholder").forEach(element => {
+            element.innerText = email;
+        });
+        document.getElementById("countryPlaceholder").innerText = country;
+        document.getElementById("statePlaceholder").innerText = state;
+        document.getElementById("cityPlaceholder").innerText = city;
+        document.getElementById("zipPlaceholder").innerText = zip;
+        document.getElementById("addressPlaceholder").innerText = address;
+    }
+
+    function copyPolicy() {
+        var policyContent = document.getElementById("policyContent").innerText;
+        navigator.clipboard.writeText(policyContent).then(function() {
+            alert("Return policy copied to clipboard!");
+        }, function(err) {
+            console.error("Could not copy text: ", err);
+        });
+    }
+</script>
+
+{% include 'footer_main.html' %}
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/popper.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.js"></script>
+</body>
+</html>

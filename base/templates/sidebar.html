@@ -1,0 +1,21 @@
+<div class="sidebar" id="sidebar">
+    <ul>
+        
+        {% if request.user.is_staff %}
+        <li><a href="{% url 'add_products' %}">Add Products</a></li>                    
+        <li><a href="{% url 'all_products' %}">View All Poducts</a></li>
+        <li><a href="{% url 'subscribers' %}">View Subscribers</a></li>
+        <li><a href="{% url 'redistered_users' %}">View Registered Users</a></li>
+        <li><a href="{% url 'old_subscribers' %}">View Old Subscribers</a></li>
+        
+        {% else %}
+        <li><a href="{% url 'dashboard' %}">This Week</a></li>
+        <!-- <li><a href="{% url 'past_two_weeks_products' %}">Past Week</a></li>
+        <li><a href="{% url 'past_three_weeks_products' %}">Past 3 Weeks</a></li>
+        <li><a href="{% url 'past_four_weeks_products' %}">Past 4 Weeks</a></li> -->
+        <li><a href="{% url 'image-conversion' %}">Image Conversion</a></li>
+        <li><a href="{% url 'contactus' %}">Contact Us</a></li>
+        {% endif %}
+        <li><a href="{% url 'signout' %}">Logout</a></li>
+    </ul>
+</div>
