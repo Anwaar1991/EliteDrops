@@ -142,7 +142,9 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # WhiteNoise configuration
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
 
 
 STRIPE_PUBLIC_KEY = 'pk_test_51MQnWeL8ALOno4dNRYIiZKHZLmPeWEQvQehx9eZt5QWgIHZKFK5fajMuGh4f9L9vpSaIOgpFo16UcKX3T4BwHr5E00ATRn31ht'
