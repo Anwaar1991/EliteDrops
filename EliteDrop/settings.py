@@ -124,7 +124,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -139,11 +138,10 @@ MEDIA_URL = '/media/'
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # STATIC_URL = '/static/'
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'static'),
-# )
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
 
 STRIPE_PUBLIC_KEY = 'pk_test_51MQnWeL8ALOno4dNRYIiZKHZLmPeWEQvQehx9eZt5QWgIHZKFK5fajMuGh4f9L9vpSaIOgpFo16UcKX3T4BwHr5E00ATRn31ht'
 STRIPE_SECRET_KEY = 'sk_test_51MQnWeL8ALOno4dNo9elnYfZY9t12HCgeUd9526bjYsK08yx5B5TQKrHJC7leIwUVSU3Ccbhf1KjTeohRXvcLtxM00YExDG173'
