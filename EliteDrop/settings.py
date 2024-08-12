@@ -47,7 +47,9 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',    
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'EliteDrop.urls'
@@ -141,6 +143,9 @@ MEDIA_URL = '/media/'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+# WhiteNoise configuration
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 STRIPE_PUBLIC_KEY = 'pk_test_51MQnWeL8ALOno4dNRYIiZKHZLmPeWEQvQehx9eZt5QWgIHZKFK5fajMuGh4f9L9vpSaIOgpFo16UcKX3T4BwHr5E00ATRn31ht'
